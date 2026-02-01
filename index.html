@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Exam_SMK Tamil v.2.0</title>
+        <link rel="icon" href="logosmk.png" type="image/png" />
+        <link rel="apple-touch-icon" href="logosmk.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="theme-color" content="#059363" />
+        <meta name="description" content="Aplikasi Ujian SMK Taman Ilmu" />
+        <link rel="manifest" href="site.webmanifest" />
+        <meta name="application-name" content="Exam SMK TAMIL">
+        <meta name="apple-mobile-web-app-title" content="Exam_SMK Tamil v.2.0">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-TileColor" content="#059363">
+        <meta name="msapplication-tap-highlight" content="no">
+        <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon.png">
+        <meta name="msapplication-square70x70logo" content="favicon-96x96.png">
+        <meta name="msapplication-square150x150logo" content="web-app-manifest-192x192.png">
+        <meta name="msapplication-square310x310logo" content="web-app-manifest-512x512.png">
+        <meta name="msapplication-wide310x150logo" content="test.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-96x96.png">
+        <link rel="mask-icon" href="favicon.svg" color="#059363">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: "Segoe UI", sans-serif;
+                background-color: #1a1a1a;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .app-shell {
+                width: 100%;
+                max-width: 412px;
+                height: 100%;
+                position: relative;
+                background-color: #059363;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            #splash {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #059363;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+            }
+            #splash img {
+                width: 160px;
+            }
+
+            .main-content {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                transition: transform 0.6s ease-in-out;
+            }
+
+            .layer-1-green {
+                height: 22%;
+                background-color: #059363;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                padding-top: 5px;
+                padding-bottom: 0;
+                position: relative;
+                z-index: 3;
+            }
+            .layer-1-green .logo-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .layer-1-green .logo-container img {
+                width: 115px;
+                margin-bottom: 8px;
+            }
+            .layer-1-green .logo-container h2 {
+                padding-top: 5px;
+                font-size: 1.1rem;
+                font-weight: 800;
+                letter-spacing: 1px;
+                margin: 0;
+            }
+
+            .layer-2-image {
+                height: 32%;
+                width: 100%;
+                background: url("test.png") no-repeat center;
+                background-size: cover;
+                position: relative;
+                z-index: 1;
+                margin-top: -28px;
+            }
+
+            .layer-3-white {
+                flex: 1;
+                background: white;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                margin-top: -4px;
+                position: relative;
+                z-index: 2;
+                padding: 15px 15px 60px;
+                display: flex;
+                flex-direction: column;
+                box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+                min-height: 300px;
+                height: calc(43% + 20px);
+            }
+
+            .marquee-wrap {
+                margin-top: 0px;
+                margin-bottom: -10px;
+                padding: 5px 0;
+                color: #026c48;
+                font-weight: bold;
+                font-size: 1.15rem;
+                position: relative;
+                top: 0;
+                text-align: center;
+            }
+
+            .menu-list {
+                width: 100%;
+                margin: 15px auto;
+                display: flex;
+                flex-direction: column;
+                gap: 9px;
+                margin-top: 15px;
+                flex-grow: 1;
+                padding-bottom: 20px;
+            }
+
+            .install-btn {
+                display: none;
+                margin: 10px auto !important;
+                width: 90%;
+            }
+
+            .btn {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 20px;
+                border: none;
+                border-radius: 12px;
+                font-size: 0.85rem;
+                font-weight: 530;
+                color: white;
+                text-decoration: none;
+                cursor: pointer;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: 0.2s;
+                height: 54px;
+                position: relative;
+            }
+
+            .btn span {
+                position: absolute;
+                left: 45%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                width: 100%;
+                pointer-events: none;
+            }
+
+            .btn img {
+                width: 50px;
+                height: 50px;
+                margin-left: 284px;
+                flex-shrink: 0;
+            }
+
+            .btn-green {
+                background-color: #94b91c;
+            }
+            .btn-grey {
+                background-color: #6e6e6e;
+            }
+
+            .footer {
+                position: absolute;
+                bottom: 2px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                text-align: center;
+                font-size: 1.15rem;
+                font-weight: bold;
+                color: #059363;
+                z-index: 40;
+            }
+
+            #exam-screen {
+                position: absolute;
+                top: 0;
+                left: 100%;
+                width: 100%;
+                height: 100%;
+                background-color: white;
+                z-index: 500;
+                transition: transform 0.6s ease-in-out;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .exam-header {
+                background-color: #059363;
+                height: 56px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 20px;
+                position: relative;
+                z-index: 10;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                flex-shrink: 0;
+            }
+
+            .exam-header-left {
+                display: flex;
+                flex-direction: column;
+                color: white;
+            }
+
+            .exam-school-name {
+                font-size: 1.2rem;
+                font-weight: 640;
+                letter-spacing: 0.5px;
+            }
+
+            .exam-subtitle {
+                font-size: 1rem;
+                color: #e0e0e0;
+                margin-top: 2px;
+            }
+
+            .menu-dots {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .dot {
+                width: 4px;
+                height: 4px;
+                background-color: white;
+                border-radius: 50%;
+                margin: 1.5px 0;
+            }
+
+            .menu-dropdown {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                background-color: white;
+                border-radius: 0;
+                box-shadow: none;
+                z-index: 1002;
+                overflow: hidden;
+                min-width: 190px;
+                display: none;
+                animation: fadeIn 0.2s ease;
+                border: 1px solid #ddd;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.8);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            .menu-dropdown.show {
+                display: block;
+            }
+
+            .menu-dots.hidden {
+                display: none;
+            }
+
+            .dropdown-item {
+                padding: 14px 20px;
+                font-size: 1rem;
+                color: #333;
+                text-decoration: none;
+                display: block;
+                transition: background-color 0.2s;
+                border-bottom: 0px solid #f0f0f0;
+                cursor: pointer;
+                text-align: left;
+                font-weight: 400;
+            }
+
+            .dropdown-item:last-child {
+                border-bottom: none;
+            }
+
+            .dropdown-item:hover {
+                background-color: #f5f5f5;
+            }
+
+            .iframe-container {
+                flex: 1;
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .iframe-container iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="app-shell">
+            <div id="splash">
+                <img src="logosmk.png" alt="Logo SMK" />
+            </div>
+
+            <div class="main-content" id="mainView">
+                <div class="layer-1-green">
+                    <div class="logo-container">
+                        <img src="logosmk.png" alt="Logo Header" />
+                        <h2>SMK TAMAN ILMU</h2>
+                    </div>
+                </div>
+
+                <div class="layer-2-image"></div>
+
+                <div class="layer-3-white">
+                    <div class="marquee-wrap">
+                        <marquee scrollamount="3"
+                            >Selamat datang di Aplikasi Exam_SMK_Tamil</marquee
+                        >
+                    </div>
+
+                    <div class="menu-list">
+                        <button class="btn btn-green" onclick="startLogin()">
+                            <span>Login</span>
+                            <img src="exam.png" />
+                        </button>
+
+                        <button class="btn btn-green">
+                            <span>Reset Data Aplikasi</span>
+                            <img src="reset.png" />
+                        </button>
+
+                        <button class="btn btn-grey">
+                            <span>Keluar Aplikasi</span>
+                            <img src="close.png" />
+                        </button>
+                    </div>
+
+                    <div class="footer">Versi 2.0</div>
+                </div>
+            </div>
+
+            <div id="exam-screen">
+                <div class="exam-header">
+                    <div class="exam-header-left">
+                        <div class="exam-school-name">SMK TAMAN ILMU</div>
+                        <div class="exam-subtitle">Exam_SMK Tamil</div>
+                    </div>
+                    <div class="menu-dots" id="menuDots" onclick="toggleMenu()">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+
+                <div class="menu-dropdown" id="menuDropdown">
+                    <div class="dropdown-item" onclick="showAbout()">
+                        Tentang
+                    </div>
+                    <div class="dropdown-item" onclick="exitExam()">Keluar</div>
+                </div>
+
+                <div class="iframe-container">
+                    <iframe
+                        id="examIframe"
+                        src=""
+                        frameborder="0"
+                        allow="fullscreen"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker
+                        .register("sw.js")
+                        .then((registration) => {
+                            console.log(
+                                "Service Worker registered:",
+                                registration.scope
+                            );
+                        })
+                        .catch((error) => {
+                            console.log(
+                                "Service Worker registration failed:",
+                                error
+                            );
+                        });
+                });
+            }
+
+            let deferredPrompt;
+            const installButton = document.createElement("button");
+            installButton.style.display = "none";
+
+            window.addEventListener("beforeinstallprompt", (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+
+                installButton.textContent = "Install Aplikasi";
+                installButton.className = "btn btn-green";
+                installButton.style.display = "block";
+                installButton.style.margin = "10px auto";
+                document.querySelector(".menu-list").appendChild(installButton);
+
+                installButton.addEventListener("click", () => {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === "accepted") {
+                            console.log("User accepted install");
+                        }
+                        deferredPrompt = null;
+                        installButton.style.display = "none";
+                    });
+                });
+            });
+
+            window.addEventListener("appinstalled", () => {
+                console.log("Aplikasi berhasil diinstall");
+                installButton.style.display = "none";
+            });
+
+            window.addEventListener("load", () => {
+                setTimeout(() => {
+                    document.getElementById("splash").style.transform =
+                        "translateX(-100%)";
+                }, 2000);
+            });
+
+            function startLogin() {
+                const mainView = document.getElementById("mainView");
+                const examScreen = document.getElementById("exam-screen");
+                const examIframe = document.getElementById("examIframe");
+
+                examIframe.src =
+                    "https://kjgkhl4g8khklhgahkplajqucpkznshahsk0oejhoishbugib79ohjtt.21252425.xxxxx17210315.xyz/cgi-sys/suspendedpage.cgi";
+
+                mainView.style.transform = "translateX(-100%)";
+                examScreen.style.transform = "translateX(-100%)";
+            }
+
+            function toggleMenu() {
+                const menuDropdown = document.getElementById("menuDropdown");
+                const menuDots = document.getElementById("menuDots");
+
+                menuDropdown.classList.toggle("show");
+
+                if (menuDropdown.classList.contains("show")) {
+                    menuDots.classList.add("hidden");
+                } else {
+                    menuDots.classList.remove("hidden");
+                }
+            }
+
+            function showAbout() {
+                hideMenu();
+            }
+
+            function exitExam() {
+                const mainView = document.getElementById("mainView");
+                const examScreen = document.getElementById("exam-screen");
+                const examIframe = document.getElementById("examIframe");
+
+                examIframe.src = "";
+
+                mainView.style.transform = "translateX(0)";
+                examScreen.style.transform = "translateX(0)";
+
+                hideMenu();
+            }
+
+            function hideMenu() {
+                const menuDropdown = document.getElementById("menuDropdown");
+                const menuDots = document.getElementById("menuDots");
+
+                menuDropdown.classList.remove("show");
+                menuDots.classList.remove("hidden");
+            }
+
+            document.addEventListener("click", function (event) {
+                const menuDropdown = document.getElementById("menuDropdown");
+                const menuDots = document.getElementById("menuDots");
+
+                if (
+                    !menuDropdown.contains(event.target) &&
+                    !menuDots.contains(event.target)
+                ) {
+                    hideMenu();
+                }
+            });
+
+            document
+                .getElementById("examIframe")
+                .addEventListener("load", function () {
+                    const iframeDoc =
+                        this.contentDocument || this.contentWindow.document;
+                    iframeDoc.addEventListener("click", function () {
+                        hideMenu();
+                    });
+                });
+        </script>
+    </body>
+</html>

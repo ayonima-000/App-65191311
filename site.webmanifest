@@ -1,0 +1,51 @@
+{
+  "name": "Exam SMK TAMIL",
+  "short_name": "Exam_SMK Tamil v.2.0",
+  "description": "Aplikasi Ujian SMK Taman Ilmu",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#059363",
+  "theme_color": "#059363",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "id",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "screenshots": [
+    {
+      "src": "test.png",
+      "sizes": "947x623",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Login Ujian",
+      "short_name": "Login",
+      "description": "Mulai sesi ujian",
+      "url": "/?action=login",
+      "icons": [
+        {
+          "src": "exam.png",
+          "sizes": "50x50"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}
