@@ -40,7 +40,7 @@ export default function Home() {
 
   const startLogin = () => {
     window.open(
-      'https://kjgkhl4g8khklhgahkplajqucpkznshahkplajqucpkznshahsk0oejhoishbugib79ohjtt.21252425.xxxxx17210315.xyz/cgi-sys/suspendedpage.cgi',
+      'https://rsfapsk96duhau5786sns646mpisub89vsa42341s0su5s4sd.smkta.smktamanilmu.sch.id/index.php/tes_dashboard',
       '_blank',
       'noopener,noreferrer'
     );
